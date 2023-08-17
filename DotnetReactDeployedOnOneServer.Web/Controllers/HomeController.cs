@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using DotnetReactDeployedOnOneServer.Web.Models;
 
@@ -15,7 +16,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(),
+            "wwwroot", "index.html"), MediaTypeNames.Text.Html);
     }
 
     public IActionResult Privacy()
